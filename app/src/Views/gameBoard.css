@@ -1,0 +1,77 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  /* background-image: url(https://image.api.playstation.com/vulcan/ap/rnd/202105/1919/MUZqQPvfXzVJ5WaVn4GVofvw.png); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.gameBoard_titel {
+  position: absolute;
+  font-size: 70px;
+  font-family: "Rubik Moonrocks", cursive;
+  margin: auto;
+  right: 0%;
+  top: 3rem;
+  color: red;
+}
+
+.gameBoard_main {
+  position: absolute;
+  background-color: black;
+  border: 3px solid black;
+  height: auto;
+  width: 50%;
+  margin-top: 5%;
+  margin-left: 25%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 8px;
+  row-gap: 8px;
+  bottom: 12rem;
+  padding: 2px;
+}
+.gameBoard_img {
+  width: 100%;
+}
+
+.gameBoard_footer {
+  background-color: lightskyblue;
+  bottom: 5%;
+  position: absolute;
+  display: flex;
+  width: 50%;
+  height: 10%;
+  margin-left: 25%;
+  justify-content: space-evenly;
+}
+
+.timer,
+.points {
+  font-size: xx-large;
+  padding: 2rem;
+}
+
+.gameBoard_a {
+  font-size: xx-large;
+  width: 8rem;
+  height: 3.5rem;
+  background-color: darkblue;
+  color: aqua;
+  margin-bottom: 20px;
+  margin: 1.2rem;
+  padding: 10px 0px 25px 29px;
+  text-decoration: none;
+}
+.gameBoard_a:hover {
+  box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24),
+    0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}

@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: auto;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: lightskyblue;
+}
+
+.winScreen_img {
+  max-width: 40%;
+  display: block;
+  margin-top: 7rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.winScreen_section {
+  text-align: center;
+}
+span {
+  font-size: 5rem;
+}
+.spanY {
+  color: hsl(0, 80%, 50%);
+}
+.spanO {
+  color: hsl(225, 80%, 50%);
+}
+.spanU {
+  color: hsl(45, 80%, 50%);
+}
+.spanW {
+  color: hsl(180, 81%, 40%);
+}
+.spanI {
+  color: hsl(90, 80%, 50%);
+}
+.spanN {
+  color: hsl(270, 80%, 50%);
+}
+
+.winScreen_p {
+  font-size: x-large;
+}
+
+.winScreen_div {
+  font-size: xx-large;
+}
+
+.winScreen_a {
+  display: block;
+  margin-top: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  width: 13%;
+  height: 3.5rem;
+  font-size: x-large;
+  background-color: darkblue;
+  color: aqua;
+  text-decoration: none;
+  padding: 13px 10px 10px 63px;
+}
+.winScreen_a::after {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  content: "\f04b";
+  font-size: 20px;
+  padding-left: 1rem;
+}
