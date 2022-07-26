@@ -11,7 +11,7 @@ body {
   background-color: lightskyblue;
 }
 
-.winScreen_img {
+.winScreen__img {
   max-width: 40%;
   display: block;
   margin-top: 7rem;
@@ -19,7 +19,7 @@ body {
   margin-right: auto;
 }
 
-.winScreen_section {
+.winScreen__section {
   text-align: center;
 }
 span {
@@ -44,15 +44,15 @@ span {
   color: hsl(270, 80%, 50%);
 }
 
-.winScreen_p {
+.winScreen__p {
   font-size: x-large;
 }
 
-.winScreen_div {
+.winScreen__div {
   font-size: xx-large;
 }
 
-.winScreen_a {
+.winScreen__a {
   display: block;
   margin-top: 3rem;
   margin-left: auto;
@@ -65,7 +65,7 @@ span {
   text-decoration: none;
   padding: 13px 10px 10px 63px;
 }
-.winScreen_a::after {
+.winScreen__a::after {
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   content: "\f04b";
