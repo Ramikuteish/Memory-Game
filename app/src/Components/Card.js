@@ -6,11 +6,13 @@ function Card(props) {
     <>
       <img
         className="gameBoard__img"
-        src={props.selected ? props.img : backgroundImg}
+        src={props.found || props.selected ? props.img : backgroundImg}
         alt="gameBoard__img"
         onClick={() => {
           // setSelected(!selected); // !false=true  ... !true=false
-          props.click();
+          if (props.found === false) {
+            props.click();
+          }
           // if (selected === true) {
           //   setSelected(false);
           // } else {
