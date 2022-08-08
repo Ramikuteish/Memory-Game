@@ -10,7 +10,7 @@ body {
   margin: 0;
 }
 
-.section {
+.gameBoard__section {
   height: 100vh;
   width: 100%;
   background-image: url(https://image.api.playstation.com/vulcan/ap/rnd/202105/1919/MUZqQPvfXzVJ5WaVn4GVofvw.png);
@@ -47,6 +47,8 @@ body {
 .gameBoard__img {
   width: 100%;
   height: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
 }
 
 .gameBoard__footer {

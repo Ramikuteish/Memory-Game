@@ -4,10 +4,21 @@ import Card from "../Components/Card";
 import { useState } from "react";
 
 function GameBoard() {
+  /* 
+  const cards = [
+    {
+      img: "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
+      selected: false,
+      found: true,
+    },
+  ];
+  */
+
+  // Motive für die Karten 12 Bilder , 6 verschiedene Links(pärchen)
+  // Die Karten sind aufgedeckt
   const cards = [
     "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
     "https://www.memozor.com/jeux/jquery/emoji_1/image10.png",
-
     "https://i.pinimg.com/564x/c1/dc/42/c1dc42a15bb6611410acedc8a0716a1a--happy-smiley-face-smiley-faces.jpg",
 
     "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
@@ -21,11 +32,10 @@ function GameBoard() {
     "https://as1.ftcdn.net/v2/jpg/02/15/08/80/1000_F_215088044_Ow0pypSekAamu3jZJnkRtfAyKj6KVlKj.jpg",
   ];
 
-  const [clicks, setClicks] = useState(0);
-  if (clicks % 2 === 0) {
-    // console.log(clicks);
-  }
-
+  //Die ausgewälten Karten, wir erstellen 2 Variablen [selected, setselected] die aus die Funktion useState zurückbekommen, die variabel selected ist unsere state und die Funktion setSelected kann den State verändern.
+  //An die Funktion useState übergeben wir den Standard Wert.
+  //Für jede Karte gibt es einen Boolean in diesem Array.
+  // Die Karten sind verdeckt
   const [selected, setSelected] = useState([
     false,
     false,
@@ -38,17 +48,89 @@ function GameBoard() {
     false,
     false,
     false,
+    false,
   ]);
+
+  // Zähler - Mit jeder Klick zählt ein Höher
+  const [clicks, setClicks] = useState(0);
+
+  // wenn ein pärchen gefunden würde , werden in State die beiden Karten mit true markiert.
+  const [found, setFound] = useState([
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ]);
+
+  if (
+    // clicks % 2 === 0 &&
+    // clicks > 0 &&
+    // zähle alle ausgewälte Karten und und mache weiter, wenn genau 2 true ausgewält sind
+    selected.filter((element) => element === true).length === 2
+  ) {
+    // beinhaltet alle Positionen der ausgewälten Karten.
+    //In selectedCards soll alle index, die ausgwälten Karten gespeichert werden.
+    const selectedCards = [];
+    // console.log(clicks);
+    selected.forEach((card, index) => {
+      // console.log(card, index);
+      // wenn die Karte ausgewält wurde, füge den index zu selectedCards hinzu.
+      if (card) selectedCards.push(index);
+    });
+
+    // vergleiche die ausgewälten Karten , da immer 2 Karten ausgewält würden, können wir das erste und zweite Element in selectedCards vergleichen.
+    if (cards[selectedCards[0]] === cards[selectedCards[1]]) {
+      // wenn die Karten gleich sind, markiere sie in den gefundenen karten Found
+      found[selectedCards[0]] = true;
+      found[selectedCards[1]] = true;
+      // spichere das neu state für Found
+      setFound(found);
+    }
+
+    // gesamte setSelected auf false zurücksetzen
+    // setTimeout(
+    //   () =>
+    setSelected([
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+    ]);
+    //   1500
+    // );
+  } // nur 2 Cards gleichzeitig aufdecken
+  console.log(found);
+  // erstelle in jede Karte in Cards eine Komponente card und speichere sie als Array in cardComponents
   const cardComponents = cards.map((card, index) => {
-    console.log(selected[index]);
+    // console.log(selected[index]);
     return (
       <Card
         img={card}
         key={index}
         selected={selected[index]}
+        found={found[index]}
         click={() => {
+          // wenn auf die Karte geklickt wird, erhöhen wir clicks um 1
           setClicks(clicks + 1);
-          selected[index] = !selected[index];
+          // wir wechseln selected auf true
+          selected[index] = true;
+          // und speichern den neuen State für selected
           setSelected(selected);
         }}
       />
@@ -56,7 +138,7 @@ function GameBoard() {
   });
   // console.log(cardComponents);
   return (
-    <section className="section">
+    <section className="gameBoard__section">
       <h1 className="gameBoard__titel">
         DO <br />
         YOU <br />
