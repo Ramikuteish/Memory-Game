@@ -4,23 +4,76 @@ import Card from "../Components/Card";
 import { useState } from "react";
 
 function GameBoard() {
-  /* 
-  const cards = [
+  /*
+  const cardss = [
     {
       img: "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
       selected: false,
-      found: true,
+      found: false,
+    },
+    {
+      img: "https://www.memozor.com/jeux/jquery/emoji_1/image10.png",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://i.pinimg.com/564x/c1/dc/42/c1dc42a15bb6611410acedc8a0716a1a--happy-smiley-face-smiley-faces.jpg",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh1VNE4wucEZZNUqEycTxGdTJthyJ_IOhHJnafJtJjLVLWLO6Ko9UQnRN0W6WbzgNCXb4&usqp=CAU",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://as1.ftcdn.net/v2/jpg/02/15/08/80/1000_F_215088044_Ow0pypSekAamu3jZJnkRtfAyKj6KVlKj.jpg",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://i.pinimg.com/564x/c1/dc/42/c1dc42a15bb6611410acedc8a0716a1a--happy-smiley-face-smiley-faces.jpg",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://pbs.twimg.com/media/CxjE1eOUoAAwBbk.jpg",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh1VNE4wucEZZNUqEycTxGdTJthyJ_IOhHJnafJtJjLVLWLO6Ko9UQnRN0W6WbzgNCXb4&usqp=CAU",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://www.memozor.com/jeux/jquery/emoji_1/image10.png",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://pbs.twimg.com/media/CxjE1eOUoAAwBbk.jpg",
+      selected: false,
+      found: false,
+    },
+    {
+      img: "https://as1.ftcdn.net/v2/jpg/02/15/08/80/1000_F_215088044_Ow0pypSekAamu3jZJnkRtfAyKj6KVlKj.jpg",
+      selected: false,
+      found: false,
     },
   ];
   */
 
   // Motive für die Karten 12 Bilder , 6 verschiedene Links(pärchen)
-  // Die Karten sind aufgedeckt
   const cards = [
     "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
     "https://www.memozor.com/jeux/jquery/emoji_1/image10.png",
     "https://i.pinimg.com/564x/c1/dc/42/c1dc42a15bb6611410acedc8a0716a1a--happy-smiley-face-smiley-faces.jpg",
-
     "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh1VNE4wucEZZNUqEycTxGdTJthyJ_IOhHJnafJtJjLVLWLO6Ko9UQnRN0W6WbzgNCXb4&usqp=CAU",
     "https://as1.ftcdn.net/v2/jpg/02/15/08/80/1000_F_215088044_Ow0pypSekAamu3jZJnkRtfAyKj6KVlKj.jpg",
@@ -32,10 +85,10 @@ function GameBoard() {
     "https://as1.ftcdn.net/v2/jpg/02/15/08/80/1000_F_215088044_Ow0pypSekAamu3jZJnkRtfAyKj6KVlKj.jpg",
   ];
 
-  //Die ausgewälten Karten, wir erstellen 2 Variablen [selected, setselected] die aus die Funktion useState zurückbekommen, die variabel selected ist unsere state und die Funktion setSelected kann den State verändern.
-  //An die Funktion useState übergeben wir den Standard Wert.
+  //Die ausgewählten Karten, wir erstellen 2 Variablen [selected, setselected] die aus die Funktion useState zurückbekommen, die variabel selected ist unsere state und die Funktion setSelected kann den State verändern.
+  //An die Funktion useState übergeben wir den Standardwert.
   //Für jede Karte gibt es einen Boolean in diesem Array.
-  // Die Karten sind verdeckt
+
   const [selected, setSelected] = useState([
     false,
     false,
