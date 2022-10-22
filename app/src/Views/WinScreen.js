@@ -1,7 +1,9 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./winScreen.css";
 
 function WinScreen() {
+  const location = useLocation();
+  console.log(location.state);
   return (
     <>
       <img
@@ -16,16 +18,17 @@ function WinScreen() {
         <span className="spanU">U</span>
         &nbsp; &nbsp; &nbsp; &nbsp;
         <span className="spanW">W</span>
-        <span className="spanI">I</span>
+        <span className="spanO2">O</span>
         <span className="spanN">N</span>
         <br />
         <br />
         <p className="winScreen__p">
-          You got 10 moves!
+          You got {location.state.clicks} moves!
           <br />
-          You earned 2 knowledge points.
         </p>
-        <div className="winScreen__div">00:00</div>
+        <div className="winScreen__div">
+          Your time was {location.state.timer} second
+        </div>
       </section>
 
       <Link className="winScreen__a" to="/">

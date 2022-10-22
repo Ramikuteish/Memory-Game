@@ -1,9 +1,27 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./gameBoard.css";
 import Card from "../Components/Card";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+const cards = [
+  "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
+  "https://www.memozor.com/jeux/jquery/emoji_1/image10.png",
+  "https://i.pinimg.com/564x/c1/dc/42/c1dc42a15bb6611410acedc8a0716a1a--happy-smiley-face-smiley-faces.jpg",
+  "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh1VNE4wucEZZNUqEycTxGdTJthyJ_IOhHJnafJtJjLVLWLO6Ko9UQnRN0W6WbzgNCXb4&usqp=CAU",
+  "https://as1.ftcdn.net/v2/jpg/02/15/08/80/1000_F_215088044_Ow0pypSekAamu3jZJnkRtfAyKj6KVlKj.jpg",
+  "https://i.pinimg.com/564x/c1/dc/42/c1dc42a15bb6611410acedc8a0716a1a--happy-smiley-face-smiley-faces.jpg",
+  "https://pbs.twimg.com/media/CxjE1eOUoAAwBbk.jpg",
+  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh1VNE4wucEZZNUqEycTxGdTJthyJ_IOhHJnafJtJjLVLWLO6Ko9UQnRN0W6WbzgNCXb4&usqp=CAU",
+  "https://www.memozor.com/jeux/jquery/emoji_1/image10.png",
+  "https://pbs.twimg.com/media/CxjE1eOUoAAwBbk.jpg",
+  "https://as1.ftcdn.net/v2/jpg/02/15/08/80/1000_F_215088044_Ow0pypSekAamu3jZJnkRtfAyKj6KVlKj.jpg",
+].sort(function () {
+  return Math.random() - 0.5;
+});
 
 function GameBoard() {
+  const navigate = useNavigate();
   /*
   const cardss = [
     {
@@ -70,20 +88,6 @@ function GameBoard() {
   */
 
   // Motive für die Karten 12 Bilder , 6 verschiedene Links(pärchen)
-  const cards = [
-    "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
-    "https://www.memozor.com/jeux/jquery/emoji_1/image10.png",
-    "https://i.pinimg.com/564x/c1/dc/42/c1dc42a15bb6611410acedc8a0716a1a--happy-smiley-face-smiley-faces.jpg",
-    "https://www.memozor.com/jeux/jquery/emoji_1/image7.png",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh1VNE4wucEZZNUqEycTxGdTJthyJ_IOhHJnafJtJjLVLWLO6Ko9UQnRN0W6WbzgNCXb4&usqp=CAU",
-    "https://as1.ftcdn.net/v2/jpg/02/15/08/80/1000_F_215088044_Ow0pypSekAamu3jZJnkRtfAyKj6KVlKj.jpg",
-    "https://i.pinimg.com/564x/c1/dc/42/c1dc42a15bb6611410acedc8a0716a1a--happy-smiley-face-smiley-faces.jpg",
-    "https://pbs.twimg.com/media/CxjE1eOUoAAwBbk.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTh1VNE4wucEZZNUqEycTxGdTJthyJ_IOhHJnafJtJjLVLWLO6Ko9UQnRN0W6WbzgNCXb4&usqp=CAU",
-    "https://www.memozor.com/jeux/jquery/emoji_1/image10.png",
-    "https://pbs.twimg.com/media/CxjE1eOUoAAwBbk.jpg",
-    "https://as1.ftcdn.net/v2/jpg/02/15/08/80/1000_F_215088044_Ow0pypSekAamu3jZJnkRtfAyKj6KVlKj.jpg",
-  ];
 
   //Die ausgewählten Karten, wir erstellen 2 Variablen [selected, setselected] die aus die Funktion useState zurückbekommen, die variabel selected ist unsere state und die Funktion setSelected kann den State verändern.
   //An die Funktion useState übergeben wir den Standardwert.
@@ -106,6 +110,20 @@ function GameBoard() {
 
   // Zähler - Mit jeder Klick zählt ein Höher
   const [clicks, setClicks] = useState(0);
+  const [timer, setTimer] = useState(0);
+  const [interval, saveInterval] = useState(null);
+
+  useEffect(() => {
+    if (!interval && clicks > 0) {
+      saveInterval(
+        setInterval(() => {
+          setTimer((prevTimer) => {
+            return prevTimer + 1;
+          });
+        }, 1000)
+      );
+    }
+  }, [timer, clicks, interval]); //  <= dependencies
 
   // wenn ein pärchen gefunden würde , werden in State die beiden Karten mit true markiert.
   const [found, setFound] = useState([
@@ -165,10 +183,25 @@ function GameBoard() {
       false,
       false,
     ]);
+
+    if (found.every((card) => card === true)) {
+      clearInterval(interval);
+      setTimeout(function () {
+        navigate("../win", {
+          state: {
+            timer,
+            clicks,
+          },
+        });
+      }, 4000);
+    }
+    console.log(found.every((card) => card === true));
     //   1500
     // );
   } // nur 2 Cards gleichzeitig aufdecken
-  console.log(found);
+
+  useEffect(() => {}, [found, interval]);
+
   // erstelle in jede Karte in Cards eine Komponente card und speichere sie als Array in cardComponents
   const cardComponents = cards.map((card, index) => {
     // console.log(selected[index]);
@@ -199,7 +232,7 @@ function GameBoard() {
       </h1>
       <main className="gameBoard__main ">{cardComponents}</main>
       <footer className="gameBoard__footer">
-        <div className="timer">00:00</div>
+        <div className="timer">{timer}</div>
         <div className="moves">{clicks}</div>
         <Link className="gameBoard__a" to="/">
           back
