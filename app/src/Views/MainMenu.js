@@ -19,7 +19,7 @@ function MainMenu() {
         game of correspondence Are you ready to challenge your daily memory with
         “IMG Memory Game”? <br />
         A great game for exercising your memory! <br />- Find the different
-        pairs of cards
+        pairs of cards...
       </p>
       <div className="mainMenu__buttons">
         <Link className="mainMenu__a" to="/game">

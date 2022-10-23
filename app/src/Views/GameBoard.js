@@ -232,8 +232,12 @@ function GameBoard() {
       </h1>
       <main className="gameBoard__main ">{cardComponents}</main>
       <footer className="gameBoard__footer">
-        <div className="timer">{timer}</div>
-        <div className="moves">{clicks}</div>
+        <div className="timer">
+          Your time <br /> {timer}
+        </div>
+        <div className="moves">
+          Your moves <br /> {clicks}
+        </div>
         <Link className="gameBoard__a" to="/">
           back
         </Link>

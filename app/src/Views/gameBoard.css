@@ -57,15 +57,17 @@ body {
   position: absolute;
   display: flex;
   width: 50%;
-  height: 10%;
+  height: 12%;
   margin-left: 25%;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .timer,
 .moves {
   font-size: xx-large;
-  padding: 2rem;
+  padding: 0 2rem;
+  text-align: center;
 }
 
 .gameBoard__a {
